@@ -20,7 +20,7 @@ Setting up the build process
 	* Building the building tool (the build-ception...)
 	
 		BJam is Boost library's build tool.
-		Donwload and uncompress a full boost package in the externals directory.
+		Download and uncompress a full boost package in the externals directory.
 		Open a terminal and go to the boost root folder. Then type:
 		
 		1) under linux/osx platform:
