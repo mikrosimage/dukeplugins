@@ -1,6 +1,0 @@
-$PROJECTNAME$ plugins
-
-
-	To avoid building a specific plugin, add --no-plugin-<pluginname> on the command line.
-	
-	

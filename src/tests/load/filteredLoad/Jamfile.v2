@@ -1,0 +1,11 @@
+import testing ;
+
+run 	   	main.cpp
+			/duke.host//duke.host
+		: #args
+			$(PLUGIN_DIR)
+		: #input-files
+		: #requirements
+			<include>..
+			<dependency>..//install_plugins
+	;

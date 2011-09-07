@@ -1,0 +1,9 @@
+import testing ;
+
+run 	main.cpp
+		/duke.plugin//duke.plugin
+		/boost//unit_test_framework
+	: : :
+    	<define>BOOST_TEST_MAIN
+		<define>BOOST_TEST_DYN_LINK
+	;

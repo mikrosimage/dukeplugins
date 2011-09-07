@@ -1,0 +1,19 @@
+project :
+			requirements
+				<include>..
+		:				
+			usage-requirements
+				<library>/boost//filesystem
+				<library>/boost//system
+				<include>..
+			;
+
+lib duke.host
+					:
+						[ glob-tree *.cpp ]
+    					/boost//filesystem
+    					/boost//system
+    				:
+    					<os>LINUX:<find-shared-library>dl
+    					<os>MACOSX:<find-shared-library>dl
+					;

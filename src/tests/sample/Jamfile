@@ -1,0 +1,4 @@
+lib PluginExample	: [ glob *.cpp ]
+					  /duke.plugin//duke.plugin
+					: <include>../../src/openfx/support/plugin
+					;

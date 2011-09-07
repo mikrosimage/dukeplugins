@@ -1,0 +1,9 @@
+project :
+			requirements
+				<include>..
+		:				
+			usage-requirements
+				<include>..
+			;
+
+alias duke.plugin ;

@@ -40,8 +40,8 @@ local 				BOOST_ROOT 			= [ modules.peek : BOOST_ROOT ] ;
 check-required-env 	BOOST_ROOT ;
 
 use-project /boost 						: $(BOOST_ROOT) ;
-use-project /$PROJECTNICKNAME$/lib/foo	: src/librairies/foo ;
-use-project /$PROJECTNICKNAME$/lib/bar	: src/librairies/bar ;
+use-project /duke.host     : src/libraries/dukehost ;
+use-project /duke.plugin   : src/libraries/dukeplugin ;
 
 project : requirements <threading>multi
 		: build-dir bin	;
@@ -49,22 +49,18 @@ project : requirements <threading>multi
 
 ## Main targets
 
-explicit applications
-		 plugins
+explicit 
+         duke.plugin
+         duke.host
 		 tests
-		 plugin-foo
 		 dist ;
 
-alias applications 	: src/applications/foo//foo ;
-alias plugins 		: [ plugins-selection plugin-foo ] : <os>LINUX ;
-alias plugins 		: [ plugins-selection plugin-foo ] : <os>MACOSX ;
-alias plugins 		: [ plugins-selection plugin-foo ] : <os>NT ;
-alias tests 		: [ glob src/tests/* ] ;
-alias plugin-foo	: src/plugins/foo/foo//foo ;
+alias duke.plugin       : /duke.plugin//duke.plugin ;
+alias duke.host         : /duke.host//duke.host ;
+alias tests             : [ glob src/tests/* ] ;
 
 install dist :
-	applications
-	plugins
+	duke.host
 	:
 	 <install-dependencies>on 
 	 <install-type>SHARED_LIB 

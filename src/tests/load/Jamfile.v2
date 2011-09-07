@@ -1,0 +1,25 @@
+path-constant PLUGIN_DIR : ./plugins ;
+
+project : usage-requirements
+		<use>/duke.plugin//duke.plugin
+		;
+
+
+explicit goodEmptyPlugin ;
+lib goodEmptyPlugin : GoodEmptyPlugin.cpp
+					: <link>shared
+					;
+
+
+explicit install_plugins ;
+install install_plugins : 
+							goodEmptyPlugin
+						:
+							<location>$(PLUGIN_DIR)
+						;
+
+###############################################################################
+# Collect all buildable tests
+###############################################################################
+build-project simpleLoad ;
+build-project filteredLoad ;
