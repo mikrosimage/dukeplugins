@@ -40,6 +40,6 @@ public:
 
 const int PLUGIN_COUNT = 1;
 
-#include <openfx/support/plugin/PluginBootstrap.h>
+#include <dukeplugin/PluginBootstrap.h>
 
 OfxPluginInstance<0> plugin(api.c_str(), apiVersion, idendifier.c_str(), major, minor, new GoodEmptyPlugin());

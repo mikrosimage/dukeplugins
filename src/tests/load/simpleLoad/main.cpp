@@ -5,7 +5,7 @@
  *      Author: Guillaume Chatelet
  */
 
-#include <openfx/support/host/PluginManager.h>
+#include <dukehost/PluginManager.h>
 
 bool acceptAllNoRecursive(const char* filename, const bool isDirectory){
 	return !isDirectory;

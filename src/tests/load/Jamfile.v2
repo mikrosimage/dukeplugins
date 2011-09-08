@@ -1,14 +1,16 @@
 path-constant PLUGIN_DIR : ./plugins ;
 
-project : usage-requirements
-		<use>/duke.plugin//duke.plugin
+project :
+         requirements
+		 <library>/duke.plugin//duke.plugin
+        : 
+         usage-requirements
+		 <library>/duke.plugin//duke.plugin
 		;
 
 
 explicit goodEmptyPlugin ;
-lib goodEmptyPlugin : GoodEmptyPlugin.cpp
-					: <link>shared
-					;
+lib goodEmptyPlugin : GoodEmptyPlugin.cpp ;
 
 
 explicit install_plugins ;
