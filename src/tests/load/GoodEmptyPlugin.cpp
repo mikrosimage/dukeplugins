@@ -18,7 +18,7 @@ public:
         m_pDestructorCalled(NULL) {
     }
     virtual ~GoodEmptyPlugin() {
-        // if a communication occured between host and plugin
+        // if a communication occurred between host and plugin
         // we have a valid pointer
         // and we can report the destructor has been called
         if (m_pDestructorCalled)
