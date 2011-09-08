@@ -1,7 +1,7 @@
 import testing ;
 
 run 	   	main.cpp
-			/duke.host//duke.host
+			/dukehost//dukehost
 		: #args
 			$(PLUGIN_DIR)
 		: #input-files

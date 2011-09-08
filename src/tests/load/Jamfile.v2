@@ -2,10 +2,10 @@ path-constant PLUGIN_DIR : ./plugins ;
 
 project :
          requirements
-		 <library>/duke.plugin//duke.plugin
+		 <library>/dukeplugin//dukeplugin
         : 
          usage-requirements
-		 <library>/duke.plugin//duke.plugin
+		 <library>/dukeplugin//dukeplugin
 		;
 
 

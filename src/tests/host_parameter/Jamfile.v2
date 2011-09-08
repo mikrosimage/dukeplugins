@@ -1,7 +1,7 @@
 import testing ;
 
 run    	main.cpp
-		/duke.host//duke.host
+		/dukehost//dukehost
 		/boost//unit_test_framework
 	: : :
     	<define>BOOST_TEST_MAIN

@@ -40,8 +40,8 @@ local 				BOOST_ROOT 			= [ modules.peek : BOOST_ROOT ] ;
 check-required-env 	BOOST_ROOT ;
 
 use-project /boost 						: $(BOOST_ROOT) ;
-use-project /duke.host     : src/libraries/dukehost ;
-use-project /duke.plugin   : src/libraries/dukeplugin ;
+use-project /dukehost     : src/libraries/dukehost ;
+use-project /dukeplugin   : src/libraries/dukeplugin ;
 
 project : requirements <threading>multi
 		: build-dir bin	;
@@ -50,13 +50,13 @@ project : requirements <threading>multi
 ## Main targets
 
 explicit 
-         duke.plugin
-         duke.host
+         dukeplugin
+         dukehost
 		 tests
 		 dist ;
 
-alias duke.plugin       : /duke.plugin//duke.plugin ;
-alias duke.host         : /duke.host//duke.host ;
+alias dukeplugin       : /dukeplugin//dukeplugin ;
+alias dukehost         : /dukehost//dukehost ;
 alias tests             : [ glob src/tests/* ] ;
 
 install dist :

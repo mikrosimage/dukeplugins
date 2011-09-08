@@ -6,4 +6,4 @@ project :
 				<include>..
 			;
 
-alias duke.plugin ;
+alias dukeplugin ;
