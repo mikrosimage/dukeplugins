@@ -1,1 +1,4 @@
 /bin
+.cproject
+.project
+.settings

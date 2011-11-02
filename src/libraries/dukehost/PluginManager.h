@@ -9,8 +9,7 @@
 #define PLUGINMANAGER_H_
 
 #include "PluginBinary.h"
-#include <vector>
-#include <boost/smart_ptr.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
 #include <boost/noncopyable.hpp>
 
 typedef bool (*acceptFile)(const char* filename, const bool isDirectory);
@@ -25,7 +24,7 @@ namespace host {
 class PluginManager : public boost::noncopyable {
 private:
     OfxHost &m_Host;
-    typedef std::vector<boost::shared_ptr<PluginBinary> > BinaryVector;
+    typedef boost::ptr_vector<PluginBinary> BinaryVector;
     BinaryVector m_vBinaries;
 
     void loadPlugins(const std::string folder, const acceptFile acceptFileFunction, const acceptPlug acceptPlugFunction = NULL);
@@ -38,7 +37,7 @@ public:
 
     size_t getNumberOfBinaries() const;
 
-    PluginBinary& getBinary(size_t nth) const;
+    const PluginBinary& getBinary(size_t nth) const;
 
     // construct on the fly a list of all currently available plugins
     PluginVector getPlugins() const;

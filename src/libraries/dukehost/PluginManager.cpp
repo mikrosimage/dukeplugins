@@ -8,6 +8,7 @@
 #include "PluginManager.h"
 #include <boost/filesystem.hpp>
 #include <algorithm>
+#include <memory>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
@@ -50,9 +51,9 @@ PluginManager::~PluginManager() {
 
 void PluginManager::loadPlugin(const char* filename, const acceptPlug acceptPlugFunction) {
     try {
-        boost::shared_ptr<PluginBinary> pBinary(new PluginBinary(filename));
-        pBinary->load(m_Host, acceptPlugFunction);
-        m_vBinaries.push_back(pBinary);
+        std::auto_ptr<PluginBinary> pPlugin(new PluginBinary(filename));
+        pPlugin->load(m_Host, acceptPlugFunction);
+        m_vBinaries.push_back(pPlugin.release());
     } catch (std::exception& exception) {
         std::cerr << "exception occurred while reading plug-in '" << filename << "' reason :" << std::endl << exception.what() << std::endl;
     }
@@ -62,19 +63,14 @@ size_t PluginManager::getNumberOfBinaries() const {
     return m_vBinaries.size();
 }
 
-PluginBinary& PluginManager::getBinary(size_t nth) const {
-    return *(m_vBinaries[nth]);
+const PluginBinary& PluginManager::getBinary(size_t nth) const {
+    return m_vBinaries[nth];
 }
 
 PluginManager::PluginVector PluginManager::getPlugins() const {
     PluginVector plugins;
-    typedef PluginBinary::PluginVector PluginVector;
-    for (BinaryVector::const_iterator pBinaryItr = m_vBinaries.begin(); pBinaryItr != m_vBinaries.end(); ++pBinaryItr) {
-        const PluginVector &binaryPlugins = pBinaryItr->get()->getPlugins();
-        PluginVector::const_iterator itr;
-        for (itr = binaryPlugins.begin(); itr != binaryPlugins.end(); ++itr)
-            plugins.push_back(*itr);
-    }
+    for (BinaryVector::const_iterator pBinaryItr = m_vBinaries.begin(); pBinaryItr != m_vBinaries.end(); ++pBinaryItr)
+        plugins.insert(plugins.end(), pBinaryItr->getPlugins().begin(), pBinaryItr->getPlugins().end());
     return plugins;
 }
 
