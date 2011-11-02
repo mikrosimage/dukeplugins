@@ -15,7 +15,6 @@
 #include <boost/function.hpp>
 #include <string>
 
-
 /**
  * If it's not an issue for you to use boost in your plugin project
  * you can use this implementation of plugin allowing you to easily dispatch
@@ -41,7 +40,7 @@ private:
 
 public:
     virtual OfxStatus pluginMain(const char* action, const void* handle, OfxPropertySetHandle inArgs, OfxPropertySetHandle outArgs) {
-    	const ActionMap::const_iterator functionHandler = m_ActionMap.find(action);
+        const ActionMap::const_iterator functionHandler = m_ActionMap.find(action);
         if (functionHandler == m_ActionMap.end())
             return unhandledAction(action, handle, inArgs, outArgs);
         return functionHandler->second(handle, inArgs, outArgs);

@@ -18,7 +18,7 @@
 
 // linking our type with OpenFx blind Type
 struct OfxPropertySetStruct {
-    virtual ~OfxPropertySetStruct(){
+    virtual ~OfxPropertySetStruct() {
     }
 };
 

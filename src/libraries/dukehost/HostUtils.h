@@ -10,7 +10,6 @@
 
 #include "openfx/ofxCorePlugin.h"
 
-
 namespace openfx {
 namespace host {
 
@@ -32,14 +31,14 @@ OfxStatus performNoThrow(const OfxPlugin* pPlugin, const char* action, const voi
  *
  * TODO : right now we are throwing in case of kOfxStatusFailed, maybe it's a bit too much ?
  */
-OfxStatus throwSuiteStatusException( OfxStatus stat );
+OfxStatus throwSuiteStatusException(OfxStatus stat);
 
 /**
  * A convenient function to map OfxStatus to strings
  */
-const char* mapStatusToString( OfxStatus stat );
+const char* mapStatusToString(OfxStatus stat);
 
-}  // namespace host
-}  // namespace openfx
+} // namespace host
+} // namespace openfx
 
 #endif /* HOSTUTILS_H_ */

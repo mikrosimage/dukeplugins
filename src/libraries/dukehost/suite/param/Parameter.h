@@ -26,22 +26,22 @@ namespace openfx {
 namespace host {
 
 enum EParameterType {
-        eNoneParam,
-        eStringParam,
-        eIntParam,
-        eInt2DParam,
-        eInt3DParam,
-        eDoubleParam,
-        eDouble2DParam,
-        eDouble3DParam,
-        eRGBParam,
-        eRGBAParam,
-        eBooleanParam,
-        eChoiceParam,
-        eCustomParam,
-        eGroupParam,
-        ePageParam,
-        ePushButtonParam
+    eNoneParam,
+    eStringParam,
+    eIntParam,
+    eInt2DParam,
+    eInt3DParam,
+    eDoubleParam,
+    eDouble2DParam,
+    eDouble3DParam,
+    eRGBParam,
+    eRGBAParam,
+    eBooleanParam,
+    eChoiceParam,
+    eCustomParam,
+    eGroupParam,
+    ePageParam,
+    ePushButtonParam
 };
 
 struct ParameterValue {

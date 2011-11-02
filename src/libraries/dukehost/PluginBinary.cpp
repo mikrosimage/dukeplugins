@@ -53,12 +53,12 @@ string buildErrorMsg(string& filename) {
     DWORD err = GetLastError();
 
     FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, NULL, err, MAKELANGID( LANG_NEUTRAL, SUBLANG_DEFAULT ),
-                  (LPTSTR) &lpMsgBuf, 0, NULL);
+            (LPTSTR) &lpMsgBuf, 0, NULL);
 
     ostringstream msg;
     msg << "couldn't open library " << filename << " reason :" << endl << (char*) lpMsgBuf;
     if (lpMsgBuf != NULL)
-        LocalFree(lpMsgBuf);
+    LocalFree(lpMsgBuf);
 
     return msg.str();
 }
@@ -67,7 +67,7 @@ string buildErrorMsg(string& filename) {
 #include <dlfcn.h>
 
 inline void* loadLibrary(const char* filename) {
-    return dlopen(filename, RTLD_LAZY|RTLD_LOCAL);
+    return dlopen(filename, RTLD_LAZY | RTLD_LOCAL);
 }
 
 inline void freeHandle(void* handle) {

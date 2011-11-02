@@ -44,7 +44,7 @@ public:
     PluginVector getPlugins() const;
 };
 
-}  // namespace host
-}  // namespace openfx
+} // namespace host
+} // namespace openfx
 
 #endif /* PLUGINMANAGER_H_ */

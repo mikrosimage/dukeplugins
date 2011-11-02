@@ -43,7 +43,7 @@ public:
      * and Property implementation rather than using those functions.
      */
 
-    OfxStatus _ParamDefine(OfxParamSetHandle paramSet, const char *paramType, const char *name, OfxPropertySetHandle *propertySet){
+    OfxStatus _ParamDefine(OfxParamSetHandle paramSet, const char *paramType, const char *name, OfxPropertySetHandle *propertySet) {
         return (*paramDefine)(paramSet, paramType, name, propertySet);
     }
 

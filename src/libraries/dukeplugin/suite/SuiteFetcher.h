@@ -40,7 +40,7 @@ public:
     /**
      * returns whether this Suite is available in the host
      */
-    bool isAvailable() const throw() {
+    bool isAvailable() const throw () {
         try {
             getSuite();
             return true;
@@ -57,7 +57,8 @@ public:
     OfxHost const &getHost() const {
         OfxHost const * const pHost = m_Plugin.getOfxHost();
         if (pHost == NULL)
-            throw std::runtime_error("openfx::plugin::SuiteFetcher : plugin host is NULL, remember you can use a Suite *only* between kOfxActionLoad and kOfxActionUnload action calls");
+            throw std::runtime_error(
+                                     "openfx::plugin::SuiteFetcher : plugin host is NULL, remember you can use a Suite *only* between kOfxActionLoad and kOfxActionUnload action calls");
         return *pHost;
     }
 

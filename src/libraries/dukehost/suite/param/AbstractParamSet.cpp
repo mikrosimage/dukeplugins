@@ -7,11 +7,10 @@
 
 #include "AbstractParamSet.h"
 
-
 namespace openfx {
 namespace host {
 
-AbstractParamSet::~AbstractParamSet(){
+AbstractParamSet::~AbstractParamSet() {
 }
 
 } // namespace host

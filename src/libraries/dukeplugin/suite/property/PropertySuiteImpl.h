@@ -75,7 +75,7 @@ public:
  */
 struct PropertySuiteImpl : public SuiteFetcher<OfxPropertySuiteV1> {
     PropertySuiteImpl(const IPlugin &plugin) :
-      SuiteFetcher<OfxPropertySuiteV1>(plugin, kOfxPropertySuite, 1) {
+        SuiteFetcher<OfxPropertySuiteV1> (plugin, kOfxPropertySuite, 1) {
     }
 
     /**

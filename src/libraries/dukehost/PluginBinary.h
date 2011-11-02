@@ -25,25 +25,25 @@ namespace host {
  */
 class PluginBinary : public boost::noncopyable {
 public:
-  typedef std::vector<OfxPlugin*> PluginVector;
+    typedef std::vector<OfxPlugin*> PluginVector;
 private:
-  void* _dlHandle;
-  std::string _binaryPath;
-  PluginVector _plugins;
-  void* findSymbol(const char* name);
+    void* _dlHandle;
+    std::string _binaryPath;
+    PluginVector _plugins;
+    void* findSymbol(const char* name);
 public:
-  PluginBinary(const char* filename);
-  ~PluginBinary();
+    PluginBinary(const char* filename);
+    ~PluginBinary();
 
-  void load(OfxHost &host, const acceptPlug acceptPlugFunction = NULL);
-  void unload();
+    void load(OfxHost &host, const acceptPlug acceptPlugFunction = NULL);
+    void unload();
 
-  bool isLoaded() {
-    return _dlHandle != NULL;
-  }
-  const PluginVector& getPlugins() const {
-    return _plugins;
-  }
+    bool isLoaded() {
+        return _dlHandle != NULL;
+    }
+    const PluginVector& getPlugins() const {
+        return _plugins;
+    }
 };
 
 } // namespace host

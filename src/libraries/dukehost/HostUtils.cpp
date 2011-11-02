@@ -12,7 +12,7 @@
 namespace openfx {
 namespace host {
 
-OfxStatus performNoThrow(const OfxPlugin* pPlugin, const char* action, const void* handle, OfxPropertySetHandle inArgs, OfxPropertySetHandle outArgs){
+OfxStatus performNoThrow(const OfxPlugin* pPlugin, const char* action, const void* handle, OfxPropertySetHandle inArgs, OfxPropertySetHandle outArgs) {
     assert(pPlugin);
     return pPlugin->mainEntry(action, handle, inArgs, outArgs);
 }
