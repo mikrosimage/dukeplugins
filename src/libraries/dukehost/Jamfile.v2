@@ -1,19 +1,18 @@
-project :
+project		:
 			requirements
-				<include>..
+			<include>..
+			<library>/boost//filesystem/<link>shared
+			<library>/boost//system/<link>shared
 		:				
 			usage-requirements
-				<library>/boost//filesystem
-				<library>/boost//system
-				<include>..
-			;
+			<library>/boost//filesystem/<link>shared
+			<library>/boost//system/<link>shared
+			<include>..
+		;
 
-lib dukehost
-					:
-						[ glob-tree *.cpp ]
-    					/boost//filesystem
-    					/boost//system
-    				:
-    					<os>LINUX:<find-shared-library>dl
-    					<os>MACOSX:<find-shared-library>dl
-					;
+lib dukehost	:
+			[ glob-tree *.cpp ]
+    		:
+    			<os>LINUX:<find-shared-library>dl
+    			<os>MACOSX:<find-shared-library>dl
+		;
