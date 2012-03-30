@@ -14,6 +14,7 @@
 #include <stdexcept>
 
 using namespace boost::filesystem;
+using namespace std;
 
 namespace openfx {
 namespace host {
@@ -23,25 +24,25 @@ PluginManager::PluginManager(OfxHost &host, const char* folder, const acceptFile
     loadPlugins(folder, acceptFileFunction, acceptPlugFunction);
 }
 
-void PluginManager::loadPlugins(const std::string folder, const acceptFile acceptFileFunction, const acceptPlug acceptPlugFunction) {
+void PluginManager::loadPlugins(const string &folder, const acceptFile acceptFileFunction, const acceptPlug acceptPlugFunction) {
     try {
         path directory(folder);
         if (directory.has_root_path() == false)
             directory = current_path() / directory;
         const directory_iterator end_itr; // default construction yields past-the-end
         for (directory_iterator itr(directory); itr != end_itr; ++itr) {
-            const path& file(itr->path());
-            bool isDirectory = is_directory(file);
-            const char* filename = file.string().c_str();
-            if (!acceptFileFunction(filename, isDirectory))
+            const path& fullpath(itr->path());
+            const string path = fullpath.string();
+            const bool isDirectory = is_directory(fullpath);
+            if (!acceptFileFunction(path.c_str(), isDirectory))
                 continue;
             if (isDirectory)
-                loadPlugins(file.string(), acceptFileFunction, acceptPlugFunction);
+                loadPlugins(path, acceptFileFunction, acceptPlugFunction);
             else
-                loadPlugin(filename, acceptPlugFunction);
+                loadPlugin(path.c_str(), acceptPlugFunction);
         }
-    } catch (std::exception& e) {
-        std::cerr << e.what() << std::endl;
+    } catch (exception& e) {
+        cerr << e.what() << endl;
         throw;
     }
 }
@@ -51,11 +52,11 @@ PluginManager::~PluginManager() {
 
 void PluginManager::loadPlugin(const char* filename, const acceptPlug acceptPlugFunction) {
     try {
-        std::auto_ptr<PluginBinary> pPlugin(new PluginBinary(filename));
+        auto_ptr<PluginBinary> pPlugin(new PluginBinary(filename));
         pPlugin->load(m_Host, acceptPlugFunction);
         m_vBinaries.push_back(pPlugin.release());
-    } catch (std::exception& exception) {
-        std::cerr << "exception occurred while reading plug-in '" << filename << "' reason :" << std::endl << exception.what() << std::endl;
+    } catch (exception& exception) {
+        cerr << "exception occurred while reading plug-in '" << filename << "' reason :" << endl << exception.what() << endl;
     }
 }
 

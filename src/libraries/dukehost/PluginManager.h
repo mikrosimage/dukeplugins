@@ -27,7 +27,7 @@ private:
     typedef boost::ptr_vector<PluginBinary> BinaryVector;
     BinaryVector m_vBinaries;
 
-    void loadPlugins(const std::string folder, const acceptFile acceptFileFunction, const acceptPlug acceptPlugFunction = NULL);
+    void loadPlugins(const std::string &folder, const acceptFile acceptFileFunction, const acceptPlug acceptPlugFunction = NULL);
     void loadPlugin(const char* filename, const acceptPlug acceptPlugFunction = NULL);
 
 public:
