@@ -10,9 +10,11 @@ project		:
 			<include>..
 		;
 
-lib dukehost	:
+lib dukehost	: # sources
 			[ glob-tree *.cpp ]
-    		:
-    			<os>LINUX:<find-shared-library>dl/<link>shared
-    			<os>MACOSX:<find-shared-library>dl/<link>shared
+		: # requirements
+    		: # default build
+		: # usage requirements
+    			<os>LINUX:<find-shared-library>dl
+    			<os>MACOSX:<find-shared-library>dl
 		;
