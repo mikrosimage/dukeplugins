@@ -13,6 +13,6 @@ project		:
 lib dukehost	:
 			[ glob-tree *.cpp ]
     		:
-    			<os>LINUX:<find-shared-library>dl
-    			<os>MACOSX:<find-shared-library>dl
+    			<os>LINUX:<find-shared-library>dl/<link>shared
+    			<os>MACOSX:<find-shared-library>dl/<link>shared
 		;
